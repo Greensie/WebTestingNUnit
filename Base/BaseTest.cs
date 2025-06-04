@@ -26,7 +26,7 @@ namespace WebTestingNUnit.Base
         [TearDown]
         public void TearDown()
         {
-            driver.Quit();
+            driver.Dispose();
         }
     }
 }
