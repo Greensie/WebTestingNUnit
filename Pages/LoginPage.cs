@@ -51,5 +51,10 @@ namespace WebTestingNUnit.Pages
             string retText = driver.FindElement(By.CssSelector(errorSelector)).Text.ToString();
             return retText;
         }
+
+        public void LoginAsStandardUser(IWebDriver driver)
+        {
+            Login(driver, "standard_user", "secret_sauce");
+        }
     }
 }

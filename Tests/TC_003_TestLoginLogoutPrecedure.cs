@@ -28,11 +28,10 @@ namespace WebTestingNUnit.Tests
         public void LogBlockedUser()
         { 
             var loginPage = new LoginPage();
-            var logoutComponent = new LogoutComponent();
             Assert.That(loginPage.isAt(driver), "Login page was not loaded correctly.");
             if(loginPage.LoginExpectingFailure(driver, "locked_out_user", "secret_sauce") == "Epic sadface: Sorry, this user has been locked out.")
             {
-                Assert.Pass("User was not able to log");
+                Assert.Pass("User was not able to log in");
             }
         }
     }
