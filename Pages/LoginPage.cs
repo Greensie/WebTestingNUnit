@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using WebTestingNUnit.Utils;
 
 namespace WebTestingNUnit.Pages
 {
@@ -23,6 +24,8 @@ namespace WebTestingNUnit.Pages
             login.SendKeys(username);
             pass.SendKeys(password);
             driver.FindElement(By.CssSelector(loginButtonSelector)).Click();
+            //var popUpHandler = new PopUpHandler();
+            //popUpHandler.handleThePasswordPopUp(driver);
         }
 
         public bool isAt(IWebDriver driver)

@@ -34,5 +34,17 @@ namespace WebTestingNUnit.Tests
                 Assert.Pass("User was not able to log in");
             }
         }
+
+        [Test]
+        public void LogInLogOutStandardUser()
+        {
+            var loginPage = new LoginPage();
+            var logoutComponent = new LogoutComponent();
+            Assert.That(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            loginPage.LoginAsStandardUser(driver);
+            Assert.That(driver.Url.Contains("inventory"), "User was not logged in.");
+            logoutComponent.Logout(driver);
+            Assert.That(logoutComponent.IsLoggedOut(driver), "User was not logged out successfully.");
+        }
     }
 }
