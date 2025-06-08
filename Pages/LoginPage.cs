@@ -24,8 +24,6 @@ namespace WebTestingNUnit.Pages
             login.SendKeys(username);
             pass.SendKeys(password);
             driver.FindElement(By.CssSelector(loginButtonSelector)).Click();
-            //var popUpHandler = new PopUpHandler();
-            //popUpHandler.handleThePasswordPopUp(driver);
         }
 
         public bool isAt(IWebDriver driver)

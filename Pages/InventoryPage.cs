@@ -20,6 +20,7 @@ namespace WebTestingNUnit.Pages
         };
 
         readonly string cartBadgeSelector = "#shopping_cart_container > a > span";
+        readonly string cartSelector = "#shopping_cart_container > a";
 
         public void AddItemToCart(IWebDriver driver, string item)
         {
@@ -59,7 +60,16 @@ namespace WebTestingNUnit.Pages
                 return 0;
             }
 
+        }
 
+        public void EnterCart(IWebDriver driver)
+        {
+            driver.FindElement(By.CssSelector(cartSelector)).Click();
+        }
+
+        public bool isAt(IWebDriver driver)
+        {
+            return driver.Url.Contains("inventory");
         }
     }
 }
