@@ -10,6 +10,9 @@ using SeleniumExtras.WaitHelpers;
 
 namespace WebTestingNUnit.Utils
 {
+    /**************************************************************************************************************
+    * Componet responisble for handling popups on page.
+    **************************************************************************************************************/
     public class PopUpHandler
     {
         public void handleThePasswordPopUp(IWebDriver driver)

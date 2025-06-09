@@ -7,6 +7,9 @@ using OpenQA.Selenium;
 
 namespace WebTestingNUnit.Pages
 {
+    /**************************************************************************************************************
+     * Componet responisble for handling operations on inventory page.
+     **************************************************************************************************************/
     public class InventoryPage
     {
         readonly Dictionary<string, (string addSelector, string removeSelector)> cartItems = new()
@@ -22,6 +25,9 @@ namespace WebTestingNUnit.Pages
         readonly string cartBadgeSelector = "#shopping_cart_container > a > span";
         readonly string cartSelector = "#shopping_cart_container > a";
 
+        /**************************************************************************************************************
+        * Method for adding items to cart.
+        **************************************************************************************************************/
         public void AddItemToCart(IWebDriver driver, string item)
         {
             item = item.ToLower();
@@ -35,6 +41,9 @@ namespace WebTestingNUnit.Pages
             }
         }
 
+        /**************************************************************************************************************
+        * Method for removing items from cart.
+        **************************************************************************************************************/
         public void RemoveItemFromCart(IWebDriver driver, string item)
         {
             item = item.ToLower();
@@ -48,6 +57,9 @@ namespace WebTestingNUnit.Pages
             }
         }
 
+       /**************************************************************************************************************
+       * Method for getting number of items in cart from inventory page perspective.
+       **************************************************************************************************************/
         public int GetCartItemCount(IWebDriver driver)
         {
             try
@@ -62,11 +74,17 @@ namespace WebTestingNUnit.Pages
 
         }
 
+       /**************************************************************************************************************
+       * Method for proceeding into cart.
+       **************************************************************************************************************/
         public void EnterCart(IWebDriver driver)
         {
             driver.FindElement(By.CssSelector(cartSelector)).Click();
         }
 
+       /**************************************************************************************************************
+       * Method for checking if driver is currently on inventory page.
+       **************************************************************************************************************/
         public bool isAt(IWebDriver driver)
         {
             return driver.Url.Contains("inventory");

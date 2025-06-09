@@ -10,6 +10,9 @@ using WebTestingNUnit.Utils;
 
 namespace WebTestingNUnit.Pages
 {
+    /**************************************************************************************************************
+     * Componet responisble for logging in the page.
+     **************************************************************************************************************/
     public class LoginPage
     {
         readonly string loginSelector = "#user-name";
@@ -17,6 +20,9 @@ namespace WebTestingNUnit.Pages
         readonly string loginButtonSelector = "#login-button";
         readonly string errorSelector = "#login_button_container > div > form > div.error-message-container.error > h3";
 
+       /**************************************************************************************************************
+       * Default login method.
+       **************************************************************************************************************/
         public void Login(IWebDriver driver, string username, string password)
         {
             IWebElement login = driver.FindElement(By.CssSelector(loginSelector));
@@ -26,6 +32,9 @@ namespace WebTestingNUnit.Pages
             driver.FindElement(By.CssSelector(loginButtonSelector)).Click();
         }
 
+       /**************************************************************************************************************
+       * Method for checking if driver is on login page.
+       **************************************************************************************************************/
         public bool isAt(IWebDriver driver)
         {
             bool exists = driver.FindElement(By.CssSelector(loginButtonSelector)).Displayed;
@@ -40,6 +49,9 @@ namespace WebTestingNUnit.Pages
             return exists;
         }
 
+       /**************************************************************************************************************
+       * Method of logging failure user.
+       **************************************************************************************************************/
         public string LoginExpectingFailure(IWebDriver driver, string username, string password)
         {
             IWebElement login = driver.FindElement(By.CssSelector(loginSelector));
@@ -53,6 +65,9 @@ namespace WebTestingNUnit.Pages
             return retText;
         }
 
+       /**************************************************************************************************************
+       * Method for loging standard user.
+       **************************************************************************************************************/
         public void LoginAsStandardUser(IWebDriver driver)
         {
             Login(driver, "standard_user", "secret_sauce");

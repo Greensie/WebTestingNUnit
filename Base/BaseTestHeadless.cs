@@ -8,6 +8,11 @@ using OpenQA.Selenium;
 
 namespace WebTestingNUnit.Base
 {
+    /**************************************************************************************************************
+     * Base for all the tests with headless browser operations.
+     * SetUp -> Open Chrome and enter testing page saucedemo.com
+     * TearDown -> Dispose  web driver
+     *************************************************************************************************************/
     public class BaseTestHeadless
     {
         protected IWebDriver driver;

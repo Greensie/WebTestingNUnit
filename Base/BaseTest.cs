@@ -9,6 +9,11 @@ using OpenQA.Selenium.Chrome;
 
 namespace WebTestingNUnit.Base
 {
+    /**************************************************************************************************************
+     * Base for all the tests with opening browser.
+     * SetUp -> Open Chrome and enter testing page saucedemo.com
+     * TearDown -> Dispose  web driver
+     *************************************************************************************************************/
     public class BaseTest
     {
         protected IWebDriver driver;
