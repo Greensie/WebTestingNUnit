@@ -8,13 +8,13 @@ using OpenQA.Selenium.Support.UI;
 using WebTestingNUnit.Base;
 using WebTestingNUnit.Pages;
 
-namespace WebTestingNUnit.Tests
+namespace WebTestingNUnit.Tests.TC_004
 {
-    public class TC_004_BaseCartTests : BaseTestHeadless
-    {  
+    public class TC_004_BaseCartTests_Chrome_Headless : BaseTestHeadless
+    {
 
         [Test]
-        public void addAllItemsToCartThenRemoveIt()
+        public void addAllItemsToCartThenRemoveIt_Chrome_Headless()
         {
             var loginPage = new LoginPage();
             var inventoryPage = new InventoryPage();
@@ -22,8 +22,8 @@ namespace WebTestingNUnit.Tests
 
             Assert.That(loginPage.isAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            Assert.That(inventoryPage.isAt(driver));    
-            
+            Assert.That(inventoryPage.isAt(driver));
+
             foreach (var item in items)
             {
                 inventoryPage.AddItemToCart(driver, item);
@@ -33,7 +33,7 @@ namespace WebTestingNUnit.Tests
             Assert.That(itemsInCartAfterAdding, Is.EqualTo(6), "All items added to the cart!");
 
             Thread.Sleep(250);
-            
+
             foreach (var item in items)
             {
                 inventoryPage.RemoveItemFromCart(driver, item);
@@ -45,7 +45,7 @@ namespace WebTestingNUnit.Tests
         }
 
         [Test]
-        public void addAllItemsToCartThenProceedToCartAndCheck()
+        public void addAllItemsToCartThenProceedToCartAndCheck_Chrome_Headless()
         {
             var loginPage = new LoginPage();
             var inventoryPage = new InventoryPage();
@@ -69,9 +69,9 @@ namespace WebTestingNUnit.Tests
 
             inventoryPage.EnterCart(driver);
             Assert.That(cartPage.isAt(driver), Is.True, "Enteret cart Page sucesfully");
-            foreach(var item in itemsShort) 
+            foreach (var item in itemsShort)
             {
-                int itemCount = cartPage.getItemCountInCart(driver,item);
+                int itemCount = cartPage.getItemCountInCart(driver, item);
                 Assert.That(itemCount == 1);
                 Thread.Sleep(50);
             }

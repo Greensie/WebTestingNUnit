@@ -7,12 +7,12 @@ using WebTestingNUnit.Base;
 using WebTestingNUnit.Components;
 using WebTestingNUnit.Pages;
 
-namespace WebTestingNUnit.Tests
+namespace WebTestingNUnit.Tests.TC_003
 {
-    public class TC_003_TestLoginLogoutPrecedure : BaseTest
+    public class TC_003_TestLoginLogoutPrecedure_Chrome : BaseTest
     {
         [Test]
-        public void LogInLogOutUser()
+        public void LogInLogOutUser_Chrome()
         {
             var loginPage = new LoginPage();
             var logoutComponent = new LogoutComponent();
@@ -25,18 +25,18 @@ namespace WebTestingNUnit.Tests
         }
 
         [Test]
-        public void LogBlockedUser()
-        { 
+        public void LogBlockedUser_Chrome()
+        {
             var loginPage = new LoginPage();
             Assert.That(loginPage.isAt(driver), "Login page was not loaded correctly.");
-            if(loginPage.LoginExpectingFailure(driver, "locked_out_user", "secret_sauce") == "Epic sadface: Sorry, this user has been locked out.")
+            if (loginPage.LoginExpectingFailure(driver, "locked_out_user", "secret_sauce") == "Epic sadface: Sorry, this user has been locked out.")
             {
                 Assert.Pass("User was not able to log in");
             }
         }
 
         [Test]
-        public void LogInLogOutStandardUser()
+        public void LogInLogOutStandardUser_Chrome()
         {
             var loginPage = new LoginPage();
             var logoutComponent = new LogoutComponent();

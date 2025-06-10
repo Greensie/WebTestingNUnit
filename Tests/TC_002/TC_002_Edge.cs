@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using WebTestingNUnit.Base;
 using WebTestingNUnit.Pages;
 
-namespace WebTestingNUnit.Tests
+namespace WebTestingNUnit.Tests.TC_002
 {
-    public class TC_002 : BaseTest
+    public class TC_002_Edge : BaseTestEdge
     {
         [Test]
-        public void Should_Open_Page()
+        public void Should_Log_Page_Edge_()
         {
             var loginPage = new LoginPage();
             Assert.That(loginPage.isAt(driver));

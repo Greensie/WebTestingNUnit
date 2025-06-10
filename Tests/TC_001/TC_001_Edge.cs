@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AngleSharp.Attributes;
-using NUnit.Framework;
 using WebTestingNUnit.Base;
-using WebTestingNUnit.Pages;
 
-namespace WebTestingNUnit.Tests
+namespace WebTestingNUnit.Tests.TC_001
 {
-    public class TC_001 : BaseTest
+    public class TC_001_Edge : BaseTestEdge
     {
         [Test]
-        public void Should_Open_Page()
+        public void Should_Open_Page_Edge()
         {
             Assert.That(driver.Title, Does.Contain("Swag Labs"));
         }
