@@ -17,15 +17,25 @@ namespace WebTestingNUnit.Pages
         readonly string firstNameSelector = "#first-name";
         readonly string lastNameSelector = "#last-name";
         readonly string zipCodeSelector = "#postal-code";
+        readonly string errorSelector = "#checkout_info_container > div > form > div.checkout_info > div.error-message-container.error > h3";
 
-       /**************************************************************************************************************
-       * Method for entering all data needed for succesful proceed.
-       **************************************************************************************************************/
-        public void enterAllData(IWebDriver driver, string firstname, string lastname, string zipcode) 
+        /**************************************************************************************************************
+        * Method for entering all data needed for succesful proceed.
+        **************************************************************************************************************/
+        public void enterData(IWebDriver driver, string? firstname = null, string? lastname = null, string? zipcode = null) 
         {
-            driver.FindElement(By.CssSelector(firstNameSelector)).SendKeys(firstname);
-            driver.FindElement(By.CssSelector(lastNameSelector)).SendKeys(lastname);
-            driver.FindElement(By.CssSelector(zipCodeSelector)).SendKeys(zipcode);
+            if (firstname != null)
+            {
+                driver.FindElement(By.CssSelector(firstNameSelector)).SendKeys(firstname);
+            }
+            if (lastname != null)
+            {
+                driver.FindElement(By.CssSelector(lastNameSelector)).SendKeys(lastname);
+            }
+            if (zipcode != null)
+            {
+                driver.FindElement(By.CssSelector(zipCodeSelector)).SendKeys(zipcode);
+            }
         }
 
        /**************************************************************************************************************
@@ -50,6 +60,30 @@ namespace WebTestingNUnit.Pages
         public bool isAt(IWebDriver driver)
         {
             return driver.Url.Contains("checkout-step-one");
+        }
+
+       /**************************************************************************************************************
+       * Method for checking if error describing missing first name is present.
+       **************************************************************************************************************/
+        public bool isFirstNameErrorPresent(IWebDriver driver)
+        {
+            return driver.FindElement(By.CssSelector(errorSelector)).Text == "Error: First Name is required";
+        }
+
+       /**************************************************************************************************************
+       * Method for checking if error describing missing last name is present.
+       **************************************************************************************************************/
+        public bool isLastNameErrorPresent(IWebDriver driver)
+        {
+            return driver.FindElement(By.CssSelector(errorSelector)).Text == "Error: Last Name is required";
+        }
+
+       /**************************************************************************************************************
+       * Method for checking if error describing missing zip code is present.
+       **************************************************************************************************************/
+        public bool isZipCodeErrorPresent(IWebDriver driver)
+        {
+            return driver.FindElement(By.CssSelector(errorSelector)).Text == "Error: Postal Code is required";
         }
     }
 }

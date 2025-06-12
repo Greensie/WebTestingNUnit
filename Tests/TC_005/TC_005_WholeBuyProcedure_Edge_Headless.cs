@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using WebTestingNUnit.Base;
 using WebTestingNUnit.Components;
 using WebTestingNUnit.Pages;
+using WebTestingNUnit.Utils;
 
 namespace WebTestingNUnit.Tests.TC_005
 {
-    public class TC_005_WholeBuyProcedure_Chrome_Headless : BaseTestHeadless
+    public class TC_005_WholeBuyProcedure_Edge_Headless : BaseTestEdgeHeadless
     {
         [Test]
-        public void TC_005_WholeBuyProcedure()
+        public void TC_005_WholeBuyProcedureEdge()
         {
             var loginPage = new LoginPage();
             var inventoryPage = new InventoryPage();
@@ -28,9 +29,9 @@ namespace WebTestingNUnit.Tests.TC_005
 
             string[] itemsShort = { "backpack", "bike light", "t-shirt" };
 
-            Assert.That(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            AssertHelper.AssertAndLog(loginPage.isAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            Assert.That(inventoryPage.isAt(driver),"Entered inventory Page sucesfully");
+            AssertHelper.AssertAndLog(inventoryPage.isAt(driver), "Entered inventory Page sucesfully");
 
             foreach (var item in itemsShort)
             {
@@ -44,36 +45,36 @@ namespace WebTestingNUnit.Tests.TC_005
 
             inventoryPage.EnterCart(driver);
             Thread.Sleep(150);
-            Assert.That(cartPage.isAt(driver),"Enteret cart Page sucesfully");
+            AssertHelper.AssertAndLog(cartPage.isAt(driver), "Enteret cart Page sucesfully");
 
             cartPage.proceedToPayment(driver);
             Thread.Sleep(150);
 
-            Assert.That(checkoutPage1.isAt(driver), "Entered checkout proceedure");
+            AssertHelper.AssertAndLog(checkoutPage1.isAt(driver), "Entered checkout proceedure");
             checkoutPage1.enterData(driver, "John", "Snow", "99-999");
             checkoutPage1.proceedFurther(driver);
             Thread.Sleep(150);
 
-            Assert.That(checkoutPage2.isAt(driver), "Entered final checkout page");
+            AssertHelper.AssertAndLog(checkoutPage2.isAt(driver), "Entered final checkout page");
             string act1 = checkoutPage2.GetPrices(driver, 0);
             string act2 = checkoutPage2.GetPrices(driver, 1);
             string act3 = checkoutPage2.GetPrices(driver, 2);
-            Assert.That(act1 == exp1, "Item total prices match!");
-            Assert.That(act2 == exp2, "Tax match!");
-            Assert.That(act3 == exp3, "Total prices match!");
+            AssertHelper.AssertEqualAndLog(exp1, act1, "Item total prices match!");
+            AssertHelper.AssertEqualAndLog(exp2, act2, "Tax match!");
+            AssertHelper.AssertEqualAndLog(exp3, act3, "Total prices match!");
 
             string actShipping = checkoutPage2.GetShippingInformation(driver);
             string actPayment = checkoutPage2.GetPaymentInformation(driver);
-            Assert.That(actShipping == expShipping, "Shipping info match!");
-            Assert.That(actPayment == expPayment, "Payment info match!");
+            AssertHelper.AssertEqualAndLog(expShipping, actShipping, "Shipping info match!");
+            AssertHelper.AssertEqualAndLog(expPayment, actPayment, "Payment info match!");
 
             checkoutPage2.FinishShopping(driver);
             Thread.Sleep(150);
-            Assert.That(driver.Url.Contains("checkout-complete"), "User finished shopping!");
+            AssertHelper.AssertAndLog(driver.Url.Contains("checkout-complete"), "User finished shopping!");
 
             logoutComponent.Logout(driver);
             Thread.Sleep(50);
-            Assert.That(logoutComponent.IsLoggedOut(driver), "User logged out!");
+            AssertHelper.AssertAndLog(logoutComponent.IsLoggedOut(driver), "User logged out!");
         }
     }
 }
