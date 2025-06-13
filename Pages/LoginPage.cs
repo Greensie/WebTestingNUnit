@@ -35,7 +35,7 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for checking if driver is on login page.
        **************************************************************************************************************/
-        public bool isAt(IWebDriver driver)
+        public bool IsAt(IWebDriver driver)
         {
             bool exists = driver.FindElement(By.CssSelector(loginButtonSelector)).Displayed;
             if (exists)

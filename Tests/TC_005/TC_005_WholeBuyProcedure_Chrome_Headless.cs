@@ -28,9 +28,9 @@ namespace WebTestingNUnit.Tests.TC_005
 
             string[] itemsShort = { "backpack", "bike light", "t-shirt" };
 
-            Assert.That(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            Assert.That(loginPage.IsAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            Assert.That(inventoryPage.isAt(driver),"Entered inventory Page sucesfully");
+            Assert.That(inventoryPage.IsAt(driver),"Entered inventory Page sucesfully");
 
             foreach (var item in itemsShort)
             {
@@ -44,17 +44,17 @@ namespace WebTestingNUnit.Tests.TC_005
 
             inventoryPage.EnterCart(driver);
             Thread.Sleep(150);
-            Assert.That(cartPage.isAt(driver),"Enteret cart Page sucesfully");
+            Assert.That(cartPage.IsAt(driver),"Enteret cart Page sucesfully");
 
-            cartPage.proceedToPayment(driver);
+            cartPage.ProceedToPayment(driver);
             Thread.Sleep(150);
 
-            Assert.That(checkoutPage1.isAt(driver), "Entered checkout proceedure");
-            checkoutPage1.enterData(driver, "John", "Snow", "99-999");
-            checkoutPage1.proceedFurther(driver);
+            Assert.That(checkoutPage1.IsAt(driver), "Entered checkout proceedure");
+            checkoutPage1.EnterData(driver, "John", "Snow", "99-999");
+            checkoutPage1.ProceedFurther(driver);
             Thread.Sleep(150);
 
-            Assert.That(checkoutPage2.isAt(driver), "Entered final checkout page");
+            Assert.That(checkoutPage2.IsAt(driver), "Entered final checkout page");
             string act1 = checkoutPage2.GetPrices(driver, 0);
             string act2 = checkoutPage2.GetPrices(driver, 1);
             string act3 = checkoutPage2.GetPrices(driver, 2);

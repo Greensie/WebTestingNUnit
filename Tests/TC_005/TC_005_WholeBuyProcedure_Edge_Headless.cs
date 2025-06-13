@@ -29,9 +29,9 @@ namespace WebTestingNUnit.Tests.TC_005
 
             string[] itemsShort = { "backpack", "bike light", "t-shirt" };
 
-            AssertHelper.AssertAndLog(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            AssertHelper.AssertAndLog(loginPage.IsAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            AssertHelper.AssertAndLog(inventoryPage.isAt(driver), "Entered inventory Page sucesfully");
+            AssertHelper.AssertAndLog(inventoryPage.IsAt(driver), "Entered inventory Page sucesfully");
 
             foreach (var item in itemsShort)
             {
@@ -45,17 +45,17 @@ namespace WebTestingNUnit.Tests.TC_005
 
             inventoryPage.EnterCart(driver);
             Thread.Sleep(150);
-            AssertHelper.AssertAndLog(cartPage.isAt(driver), "Enteret cart Page sucesfully");
+            AssertHelper.AssertAndLog(cartPage.IsAt(driver), "Enteret cart Page sucesfully");
 
-            cartPage.proceedToPayment(driver);
+            cartPage.ProceedToPayment(driver);
             Thread.Sleep(150);
 
-            AssertHelper.AssertAndLog(checkoutPage1.isAt(driver), "Entered checkout proceedure");
-            checkoutPage1.enterData(driver, "John", "Snow", "99-999");
-            checkoutPage1.proceedFurther(driver);
+            AssertHelper.AssertAndLog(checkoutPage1.IsAt(driver), "Entered checkout proceedure");
+            checkoutPage1.EnterData(driver, "John", "Snow", "99-999");
+            checkoutPage1.ProceedFurther(driver);
             Thread.Sleep(150);
 
-            AssertHelper.AssertAndLog(checkoutPage2.isAt(driver), "Entered final checkout page");
+            AssertHelper.AssertAndLog(checkoutPage2.IsAt(driver), "Entered final checkout page");
             string act1 = checkoutPage2.GetPrices(driver, 0);
             string act2 = checkoutPage2.GetPrices(driver, 1);
             string act3 = checkoutPage2.GetPrices(driver, 2);

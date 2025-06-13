@@ -14,7 +14,7 @@ namespace WebTestingNUnit.Tests.TC_002
         public void Should_Log_Page_Edge_()
         {
             var loginPage = new LoginPage();
-            Assert.That(loginPage.isAt(driver));
+            Assert.That(loginPage.IsAt(driver));
             loginPage.Login(driver, "standard_user", "secret_sauce");
             Assert.That(driver.Url.Contains("inventory"));
 

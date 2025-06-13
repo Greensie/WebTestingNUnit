@@ -32,7 +32,7 @@ namespace WebTestingNUnit.Pages
         /**************************************************************************************************************
         * Method for checking if cart was entered.
         **************************************************************************************************************/
-        public bool isAt(IWebDriver driver)
+        public bool IsAt(IWebDriver driver)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
             wait.Until(ExpectedConditions.ElementExists(By.CssSelector(checkoutSelector)));
@@ -51,7 +51,7 @@ namespace WebTestingNUnit.Pages
         /**************************************************************************************************************
         * Method for checking how many items are currently in cart.
         **************************************************************************************************************/
-        public int getItemCountInCart(IWebDriver driver, string name)
+        public int GetItemCountInCart(IWebDriver driver, string name)
         {
             name = name.ToLower();
             if (cartItems.TryGetValue(name, out var selectors))
@@ -77,7 +77,7 @@ namespace WebTestingNUnit.Pages
         /**************************************************************************************************************
         * Method for removing items from cart.
         **************************************************************************************************************/
-        public void removeItemForomCart(IWebDriver driver, string name)
+        public void RemoveItemForomCart(IWebDriver driver, string name)
         {
             name = name.ToLower();
             if (cartItems.TryGetValue(name, out var selectors))
@@ -89,7 +89,7 @@ namespace WebTestingNUnit.Pages
         /**************************************************************************************************************
         * Method for checing if cart is empty.
         **************************************************************************************************************/
-        public bool isCartEmpty(IWebDriver driver)
+        public bool IsCartEmpty(IWebDriver driver)
         {
             var items = driver.FindElements(By.ClassName("cart_item"));
             return items.Count == 0;
@@ -98,7 +98,7 @@ namespace WebTestingNUnit.Pages
         /**************************************************************************************************************
         * Method for proceeding to the next step of shopping procedure.
         **************************************************************************************************************/
-        public void proceedToPayment(IWebDriver driver)
+        public void ProceedToPayment(IWebDriver driver)
         {
             driver.FindElement(By.CssSelector(checkoutSelector)).Click();
         }

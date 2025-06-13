@@ -15,7 +15,7 @@ namespace WebTestingNUnit.Utils
     **************************************************************************************************************/
     public class PopUpHandler
     {
-        public void handleThePasswordPopUp(IWebDriver driver)
+        public void HandleThePasswordPopUp(IWebDriver driver)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2));
             try

@@ -21,9 +21,9 @@ namespace WebTestingNUnit.Tests.TC_006
 
             string[] itemsShort = { "backpack", "bike light", "t-shirt" };
 
-            AssertHelper.AssertAndLog(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            AssertHelper.AssertAndLog(loginPage.IsAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            AssertHelper.AssertAndLog(inventoryPage.isAt(driver), "Entered inventory Page sucesfully");
+            AssertHelper.AssertAndLog(inventoryPage.IsAt(driver), "Entered inventory Page sucesfully");
 
             foreach (var item in itemsShort)
             {
@@ -37,15 +37,15 @@ namespace WebTestingNUnit.Tests.TC_006
 
             inventoryPage.EnterCart(driver);
             Thread.Sleep(150);
-            AssertHelper.AssertAndLog(cartPage.isAt(driver), "Enteret cart Page sucesfully");
+            AssertHelper.AssertAndLog(cartPage.IsAt(driver), "Enteret cart Page sucesfully");
 
-            cartPage.proceedToPayment(driver);
+            cartPage.ProceedToPayment(driver);
             Thread.Sleep(150);
 
-            AssertHelper.AssertAndLog(checkoutPage1.isAt(driver), "Entered checkout proceedure");
-            checkoutPage1.enterData(driver, lastname: "Snow",zipcode: "99-999");
-            checkoutPage1.proceedFurther(driver);
-            AssertHelper.AssertAndLog(checkoutPage1.isFirstNameErrorPresent(driver), "Error is present, first name was not provided!");
+            AssertHelper.AssertAndLog(checkoutPage1.IsAt(driver), "Entered checkout proceedure");
+            checkoutPage1.EnterData(driver, lastname: "Snow",zipcode: "99-999");
+            checkoutPage1.ProceedFurther(driver);
+            AssertHelper.AssertAndLog(checkoutPage1.IsFirstNameErrorPresent(driver), "Error is present, first name was not provided!");
         }
 
         [Test]
@@ -58,9 +58,9 @@ namespace WebTestingNUnit.Tests.TC_006
 
             string[] itemsShort = { "backpack", "bike light", "t-shirt" };
 
-            AssertHelper.AssertAndLog(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            AssertHelper.AssertAndLog(loginPage.IsAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            AssertHelper.AssertAndLog(inventoryPage.isAt(driver), "Entered inventory Page sucesfully");
+            AssertHelper.AssertAndLog(inventoryPage.IsAt(driver), "Entered inventory Page sucesfully");
 
             foreach (var item in itemsShort)
             {
@@ -74,15 +74,15 @@ namespace WebTestingNUnit.Tests.TC_006
 
             inventoryPage.EnterCart(driver);
             Thread.Sleep(150);
-            AssertHelper.AssertAndLog(cartPage.isAt(driver), "Enteret cart Page sucesfully");
+            AssertHelper.AssertAndLog(cartPage.IsAt(driver), "Enteret cart Page sucesfully");
 
-            cartPage.proceedToPayment(driver);
+            cartPage.ProceedToPayment(driver);
             Thread.Sleep(150);
 
-            AssertHelper.AssertAndLog(checkoutPage1.isAt(driver), "Entered checkout proceedure");
-            checkoutPage1.enterData(driver, firstname: "John", zipcode: "99-999");
-            checkoutPage1.proceedFurther(driver);
-            AssertHelper.AssertAndLog(checkoutPage1.isLastNameErrorPresent(driver), "Error is present, last name was not provided!");
+            AssertHelper.AssertAndLog(checkoutPage1.IsAt(driver), "Entered checkout proceedure");
+            checkoutPage1.EnterData(driver, firstname: "John", zipcode: "99-999");
+            checkoutPage1.ProceedFurther(driver);
+            AssertHelper.AssertAndLog(checkoutPage1.IsLastNameErrorPresent(driver), "Error is present, last name was not provided!");
         }
 
         [Test]
@@ -95,9 +95,9 @@ namespace WebTestingNUnit.Tests.TC_006
 
             string[] itemsShort = { "backpack", "bike light", "t-shirt" };
 
-            AssertHelper.AssertAndLog(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            AssertHelper.AssertAndLog(loginPage.IsAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            AssertHelper.AssertAndLog(inventoryPage.isAt(driver), "Entered inventory Page sucesfully");
+            AssertHelper.AssertAndLog(inventoryPage.IsAt(driver), "Entered inventory Page sucesfully");
 
             foreach (var item in itemsShort)
             {
@@ -111,15 +111,15 @@ namespace WebTestingNUnit.Tests.TC_006
 
             inventoryPage.EnterCart(driver);
             Thread.Sleep(150);
-            AssertHelper.AssertAndLog(cartPage.isAt(driver), "Enteret cart Page sucesfully");
+            AssertHelper.AssertAndLog(cartPage.IsAt(driver), "Enteret cart Page sucesfully");
 
-            cartPage.proceedToPayment(driver);
+            cartPage.ProceedToPayment(driver);
             Thread.Sleep(150);
 
-            AssertHelper.AssertAndLog(checkoutPage1.isAt(driver), "Entered checkout proceedure");
-            checkoutPage1.enterData(driver, firstname: "John", lastname: "Snow");
-            checkoutPage1.proceedFurther(driver);
-            AssertHelper.AssertAndLog(checkoutPage1.isZipCodeErrorPresent(driver), "Error is present, zip code was not provided!");
+            AssertHelper.AssertAndLog(checkoutPage1.IsAt(driver), "Entered checkout proceedure");
+            checkoutPage1.EnterData(driver, firstname: "John", lastname: "Snow");
+            checkoutPage1.ProceedFurther(driver);
+            AssertHelper.AssertAndLog(checkoutPage1.IsZipCodeErrorPresent(driver), "Error is present, zip code was not provided!");
         }
     }
 }

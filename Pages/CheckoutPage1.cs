@@ -22,7 +22,7 @@ namespace WebTestingNUnit.Pages
         /**************************************************************************************************************
         * Method for entering all data needed for succesful proceed.
         **************************************************************************************************************/
-        public void enterData(IWebDriver driver, string? firstname = null, string? lastname = null, string? zipcode = null) 
+        public void EnterData(IWebDriver driver, string? firstname = null, string? lastname = null, string? zipcode = null) 
         {
             if (firstname != null)
             {
@@ -41,7 +41,7 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for going back to cart.
        **************************************************************************************************************/
-        public void goBackToCart(IWebDriver driver)
+        public void GoBackToCart(IWebDriver driver)
         {
             driver.FindElement(By.CssSelector(cancelSelector)).Click();
         }
@@ -49,7 +49,7 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for proceeding to checkout page 2.
        **************************************************************************************************************/
-        public void proceedFurther(IWebDriver driver)
+        public void ProceedFurther(IWebDriver driver)
         {
             driver.FindElement(By.CssSelector(continueSelector)).Click();
         }
@@ -57,7 +57,7 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for checking if driver is on checkout page one.
        **************************************************************************************************************/
-        public bool isAt(IWebDriver driver)
+        public bool IsAt(IWebDriver driver)
         {
             return driver.Url.Contains("checkout-step-one");
         }
@@ -65,7 +65,7 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for checking if error describing missing first name is present.
        **************************************************************************************************************/
-        public bool isFirstNameErrorPresent(IWebDriver driver)
+        public bool IsFirstNameErrorPresent(IWebDriver driver)
         {
             return driver.FindElement(By.CssSelector(errorSelector)).Text == "Error: First Name is required";
         }
@@ -73,7 +73,7 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for checking if error describing missing last name is present.
        **************************************************************************************************************/
-        public bool isLastNameErrorPresent(IWebDriver driver)
+        public bool IsLastNameErrorPresent(IWebDriver driver)
         {
             return driver.FindElement(By.CssSelector(errorSelector)).Text == "Error: Last Name is required";
         }
@@ -81,7 +81,7 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for checking if error describing missing zip code is present.
        **************************************************************************************************************/
-        public bool isZipCodeErrorPresent(IWebDriver driver)
+        public bool IsZipCodeErrorPresent(IWebDriver driver)
         {
             return driver.FindElement(By.CssSelector(errorSelector)).Text == "Error: Postal Code is required";
         }

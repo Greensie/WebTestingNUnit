@@ -78,7 +78,7 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for checking if driver is on checkout page one.
        **************************************************************************************************************/
-        public bool isAt(IWebDriver driver)
+        public bool IsAt(IWebDriver driver)
         {
             return driver.Url.Contains("checkout-step-two");
         }

@@ -12,14 +12,14 @@ namespace WebTestingNUnit.Pages
      **************************************************************************************************************/
     public class InventoryPage
     {
-        readonly Dictionary<string, (string addSelector, string removeSelector)> cartItems = new()
+        readonly Dictionary<string, (string addSelector, string removeSelector, string pageSelector)> cartItems = new()
         {
-            ["backpack"] = ("#add-to-cart-sauce-labs-backpack", "#remove-sauce-labs-backpack"),
-            ["bike light"] = ("#add-to-cart-sauce-labs-bike-light", "#remove-sauce-labs-bike-light"),
-            ["t-shirt"] = ("#add-to-cart-sauce-labs-bolt-t-shirt", "#remove-sauce-labs-bolt-t-shirt"),
-            ["jacket"] = ("#add-to-cart-sauce-labs-fleece-jacket", "#remove-sauce-labs-fleece-jacket"),
-            ["onsie"] = ("#add-to-cart-sauce-labs-onesie", "#remove-sauce-labs-onesie"),
-            ["red t-shirt"] = ("#add-to-cart-test\\.allthethings\\(\\)-t-shirt-\\(red\\)", "#remove-test\\.allthethings\\(\\)-t-shirt-\\(red\\)")
+            ["backpack"] = ("#add-to-cart-sauce-labs-backpack", "#remove-sauce-labs-backpack", "#item_4_title_link > div"),
+            ["bike light"] = ("#add-to-cart-sauce-labs-bike-light", "#remove-sauce-labs-bike-light", "#item_0_title_link > div"),
+            ["t-shirt"] = ("#add-to-cart-sauce-labs-bolt-t-shirt", "#remove-sauce-labs-bolt-t-shirt", "#item_1_title_link > div"),
+            ["jacket"] = ("#add-to-cart-sauce-labs-fleece-jacket", "#remove-sauce-labs-fleece-jacket", "#item_5_title_link > div"),
+            ["onsie"] = ("#add-to-cart-sauce-labs-onesie", "#remove-sauce-labs-onesie", "#item_2_title_link > div"),
+            ["red t-shirt"] = ("#add-to-cart-test\\.allthethings\\(\\)-t-shirt-\\(red\\)", "#remove-test\\.allthethings\\(\\)-t-shirt-\\(red\\)", "#item_3_title_link > div")
         };
 
         readonly string cartBadgeSelector = "#shopping_cart_container > a > span";
@@ -85,9 +85,26 @@ namespace WebTestingNUnit.Pages
        /**************************************************************************************************************
        * Method for checking if driver is currently on inventory page.
        **************************************************************************************************************/
-        public bool isAt(IWebDriver driver)
+        public bool IsAt(IWebDriver driver)
         {
             return driver.Url.Contains("inventory");
         }
+
+       /**************************************************************************************************************
+       * Method for entering item page from inventory page perspective.
+       **************************************************************************************************************/
+        public void EnterItemPage(IWebDriver driver, string item)
+        {
+            item = item.ToLower();
+            if (cartItems.TryGetValue(item, out var selectors))
+            {
+                driver.FindElement(By.CssSelector(selectors.pageSelector)).Click();
+            }
+            else
+            {
+                throw new Exception($"Item '{item}' does not exist on the page");
+            }
+        }
+    }
     }
 }

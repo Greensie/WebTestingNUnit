@@ -20,9 +20,9 @@ namespace WebTestingNUnit.Tests.TC_004
             var inventoryPage = new InventoryPage();
             string[] items = { "backpack", "bike light", "t-shirt", "jacket", "onsie", "red t-shirt" };
 
-            Assert.That(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            Assert.That(loginPage.IsAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            Assert.That(inventoryPage.isAt(driver));
+            Assert.That(inventoryPage.IsAt(driver));
 
             foreach (var item in items)
             {
@@ -53,9 +53,9 @@ namespace WebTestingNUnit.Tests.TC_004
             string[] itemsShort = { "backpack", "bike light", "t-shirt" };
 
 
-            Assert.That(loginPage.isAt(driver), "Login page was not loaded correctly.");
+            Assert.That(loginPage.IsAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            Assert.That(inventoryPage.isAt(driver), Is.True, "Entered inventory Page sucesfully");
+            Assert.That(inventoryPage.IsAt(driver), Is.True, "Entered inventory Page sucesfully");
 
             foreach (var item in itemsShort)
             {
@@ -68,10 +68,10 @@ namespace WebTestingNUnit.Tests.TC_004
             Thread.Sleep(250);
 
             inventoryPage.EnterCart(driver);
-            Assert.That(cartPage.isAt(driver), Is.True, "Enteret cart Page sucesfully");
+            Assert.That(cartPage.IsAt(driver), Is.True, "Enteret cart Page sucesfully");
             foreach (var item in itemsShort)
             {
-                int itemCount = cartPage.getItemCountInCart(driver, item);
+                int itemCount = cartPage.GetItemCountInCart(driver, item);
                 Assert.That(itemCount == 1);
                 Thread.Sleep(50);
             }
