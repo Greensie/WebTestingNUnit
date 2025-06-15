@@ -11,7 +11,7 @@ namespace WebTestingNUnit.Utils
        /**************************************************************************************************************
        * Method for asserting two values and printing value for debug purposes.
        **************************************************************************************************************/
-        public static void AssertEqualAndLog(string expected, string actual, string? message = null)
+        public static void AssertStringEqualAndLog(string expected, string actual, string? message = null)
         {
             if (message != null)
             {
@@ -38,6 +38,22 @@ namespace WebTestingNUnit.Utils
             {
                 TestContext.WriteLine($"Condition is: {condition}");
                 Assert.That(condition);
+            }
+        }
+
+       /**************************************************************************************************************
+       * Method for asserting two int values and printing value for debug purposes.
+       **************************************************************************************************************/
+        public static void AssertIntEqualAndLog(int expected, int actual, string? message = null)
+        {
+            if (message != null)
+            {
+                TestContext.WriteLine($"Expected value: {expected}, Actual Value: {actual}, {message}");
+            }
+            else
+            {
+                TestContext.WriteLine($"Expected value: {expected}, Actual Value: {actual}");
+                Assert.That(expected == actual);
             }
         }
     }

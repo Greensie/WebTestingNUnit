@@ -7,7 +7,6 @@ using AngleSharp.Css.Dom;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using static NUnit.Framework.Constraints.Tolerance;
 
 namespace WebTestingNUnit.Pages
 {

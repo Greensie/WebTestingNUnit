@@ -12,6 +12,7 @@ namespace WebTestingNUnit.Pages
         readonly string addSelector = "#add-to-cart";
         readonly string removeSelector = "#remove";
         readonly string backSelector = "#back-to-products";
+        readonly string cartBadgeSelector = "#shopping_cart_container > a > span";
 
        /**************************************************************************************************************
        * Method for checking if driver is on item page.
@@ -51,6 +52,23 @@ namespace WebTestingNUnit.Pages
         public bool IsItemInCart(IWebDriver driver)
         {
             return driver.FindElement(By.CssSelector(removeSelector)).Displayed;
+        }
+
+       /**************************************************************************************************************
+       * Method for getting number of items in cart from item page perspective.
+       **************************************************************************************************************/
+        public int GetCartItemCount(IWebDriver driver)
+        {
+            try
+            {
+                var badge = driver.FindElement(By.CssSelector(cartBadgeSelector));
+                return int.Parse(badge.Text);
+            }
+            catch (NoSuchElementException)
+            {
+                return 0;
+            }
+
         }
 
     }

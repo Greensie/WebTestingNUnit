@@ -59,14 +59,14 @@ namespace WebTestingNUnit.Tests.TC_005
             string act1 = checkoutPage2.GetPrices(driver, 0);
             string act2 = checkoutPage2.GetPrices(driver, 1);
             string act3 = checkoutPage2.GetPrices(driver, 2);
-            AssertHelper.AssertEqualAndLog(exp1, act1, "Item total prices match!");
-            AssertHelper.AssertEqualAndLog(exp2, act2, "Tax match!");
-            AssertHelper.AssertEqualAndLog(exp3, act3, "Total prices match!");
+            AssertHelper.AssertStringEqualAndLog(exp1, act1, "Item total prices match!");
+            AssertHelper.AssertStringEqualAndLog(exp2, act2, "Tax match!");
+            AssertHelper.AssertStringEqualAndLog(exp3, act3, "Total prices match!");
 
             string actShipping = checkoutPage2.GetShippingInformation(driver);
             string actPayment = checkoutPage2.GetPaymentInformation(driver);
-            AssertHelper.AssertEqualAndLog(expShipping, actShipping, "Shipping info match!");
-            AssertHelper.AssertEqualAndLog(expPayment, actPayment, "Payment info match!");
+            AssertHelper.AssertStringEqualAndLog(expShipping, actShipping, "Shipping info match!");
+            AssertHelper.AssertStringEqualAndLog(expPayment, actPayment, "Payment info match!");
 
             checkoutPage2.FinishShopping(driver);
             Thread.Sleep(150);
