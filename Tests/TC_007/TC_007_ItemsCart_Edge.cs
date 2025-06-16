@@ -10,7 +10,7 @@ using WebTestingNUnit.Utils;
 
 namespace WebTestingNUnit.Tests.TC_007
 {
-    public class TC_007_ItemsCart_Chrome : BaseTest
+    public class TC_007_ItemsCart_Edge : BaseTestEdge
     {
         [Test]
         public void AddItemsToCartThanCheckIfAdded()
@@ -81,7 +81,7 @@ namespace WebTestingNUnit.Tests.TC_007
 
                 itemPage.EnterCart(driver);
                 Thread.Sleep(50);
-                cartPage.RemoveItemFromCart(driver,item);
+                cartPage.RemoveItemFromCart(driver, item);
                 AssertHelper.AssertAndLog(cartPage.IsCartEmpty(driver), "Cart is epmty!");
                 cartPage.BackToShopping(driver);
                 Thread.Sleep(50);
@@ -96,6 +96,5 @@ namespace WebTestingNUnit.Tests.TC_007
 
             logoutComponent.Logout(driver);
         }
-        
     }
 }

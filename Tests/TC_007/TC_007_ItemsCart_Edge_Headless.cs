@@ -10,7 +10,7 @@ using WebTestingNUnit.Utils;
 
 namespace WebTestingNUnit.Tests.TC_007
 {
-    public class TC_007_ItemsCart_Chrome : BaseTest
+    public class TC_007_ItemsCart_Edge_Headless : BaseTestEdgeHeadless
     {
         [Test]
         public void AddItemsToCartThanCheckIfAdded()
@@ -25,7 +25,6 @@ namespace WebTestingNUnit.Tests.TC_007
 
             AssertHelper.AssertAndLog(loginPage.IsAt(driver), "Login page was not loaded correctly.");
             loginPage.LoginAsStandardUser(driver);
-            Thread.Sleep(2000); //Added for manual click
             AssertHelper.AssertAndLog(inventoryPage.IsAt(driver), "Entered inventory Page sucesfully");
 
             foreach (var item in items)
@@ -81,7 +80,7 @@ namespace WebTestingNUnit.Tests.TC_007
 
                 itemPage.EnterCart(driver);
                 Thread.Sleep(50);
-                cartPage.RemoveItemFromCart(driver,item);
+                cartPage.RemoveItemFromCart(driver, item);
                 AssertHelper.AssertAndLog(cartPage.IsCartEmpty(driver), "Cart is epmty!");
                 cartPage.BackToShopping(driver);
                 Thread.Sleep(50);
@@ -96,6 +95,5 @@ namespace WebTestingNUnit.Tests.TC_007
 
             logoutComponent.Logout(driver);
         }
-        
     }
 }

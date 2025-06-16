@@ -76,7 +76,7 @@ namespace WebTestingNUnit.Pages
         /**************************************************************************************************************
         * Method for removing items from cart.
         **************************************************************************************************************/
-        public void RemoveItemForomCart(IWebDriver driver, string name)
+        public void RemoveItemFromCart(IWebDriver driver, string name)
         {
             name = name.ToLower();
             if (cartItems.TryGetValue(name, out var selectors))
@@ -100,6 +100,14 @@ namespace WebTestingNUnit.Pages
         public void ProceedToPayment(IWebDriver driver)
         {
             driver.FindElement(By.CssSelector(checkoutSelector)).Click();
+        }
+
+        /**************************************************************************************************************
+        * Method for coming back to main page to continue shopping.
+        **************************************************************************************************************/
+        public void BackToShopping(IWebDriver driver)
+        {
+            driver.FindElement(By.CssSelector(continueShoppingSelector)).Click();
         }
     }
 }

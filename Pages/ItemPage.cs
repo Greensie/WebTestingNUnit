@@ -13,6 +13,7 @@ namespace WebTestingNUnit.Pages
         readonly string removeSelector = "#remove";
         readonly string backSelector = "#back-to-products";
         readonly string cartBadgeSelector = "#shopping_cart_container > a > span";
+        readonly string cartSelector = "#shopping_cart_container > a";
 
        /**************************************************************************************************************
        * Method for checking if driver is on item page.
@@ -55,8 +56,16 @@ namespace WebTestingNUnit.Pages
         }
 
        /**************************************************************************************************************
-       * Method for getting number of items in cart from item page perspective.
+       * Method for checking if item is already in cart.
        **************************************************************************************************************/
+        public bool IsItemNotInCart(IWebDriver driver)
+        {
+            return driver.FindElement(By.CssSelector(addSelector)).Displayed;
+        }
+
+        /**************************************************************************************************************
+        * Method for getting number of items in cart from item page perspective.
+        **************************************************************************************************************/
         public int GetCartItemCount(IWebDriver driver)
         {
             try
@@ -68,7 +77,14 @@ namespace WebTestingNUnit.Pages
             {
                 return 0;
             }
+        }
 
+       /**************************************************************************************************************
+       * Method for entering cart from item page perspective.
+       **************************************************************************************************************/
+        public void EnterCart(IWebDriver driver)
+        {
+            driver.FindElement(By.CssSelector(cartSelector)).Click();
         }
 
     }

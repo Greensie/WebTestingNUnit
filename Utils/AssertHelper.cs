@@ -16,6 +16,7 @@ namespace WebTestingNUnit.Utils
             if (message != null)
             {
                 TestContext.WriteLine($"Expected value: {expected}, Actual Value: {actual}, {message}");
+                Assert.That(expected == actual);
             }
             else
             {
@@ -49,6 +50,7 @@ namespace WebTestingNUnit.Utils
             if (message != null)
             {
                 TestContext.WriteLine($"Expected value: {expected}, Actual Value: {actual}, {message}");
+                Assert.That(expected == actual);
             }
             else
             {
