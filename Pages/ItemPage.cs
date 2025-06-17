@@ -14,6 +14,9 @@ namespace WebTestingNUnit.Pages
         readonly string backSelector = "#back-to-products";
         readonly string cartBadgeSelector = "#shopping_cart_container > a > span";
         readonly string cartSelector = "#shopping_cart_container > a";
+        readonly string nameSelector = "#inventory_item_container > div > div > div.inventory_details_desc_container > div.inventory_details_name.large_size";
+        readonly string textSelector = "#inventory_item_container > div > div > div.inventory_details_desc_container > div.inventory_details_desc.large_size";
+        readonly string priceSelector = "#inventory_item_container > div > div > div.inventory_details_desc_container > div.inventory_details_price";
 
        /**************************************************************************************************************
        * Method for checking if driver is on item page.
@@ -87,5 +90,47 @@ namespace WebTestingNUnit.Pages
             driver.FindElement(By.CssSelector(cartSelector)).Click();
         }
 
+       /**************************************************************************************************************
+       * Method getting item name.
+       **************************************************************************************************************/
+        public string GetItemName(IWebDriver driver)
+        {
+            return driver.FindElement(By.CssSelector(nameSelector)).Text;
+        }
+
+       /**************************************************************************************************************
+       * Method getting item price as '$price'.
+       **************************************************************************************************************/
+        public string GetItemPriceString(IWebDriver driver)
+        {
+            return driver.FindElement(By.CssSelector(priceSelector)).Text;
+        }
+
+       /**************************************************************************************************************
+       * Method getting item price as float value.
+       **************************************************************************************************************/
+        public float GetItemPriceFloat(IWebDriver driver)
+        {
+            string str = driver.FindElement(By.CssSelector(priceSelector)).Text;
+            string strmod = str.Substring(1);
+            float ret;
+            try
+            {
+                ret = float.Parse(strmod);
+            }
+            catch(InvalidCastException) 
+            {
+                ret = 0;
+            }
+            return ret;
+        }
+
+       /**************************************************************************************************************
+       * Method getting item description.
+       **************************************************************************************************************/
+        public string GetItemDescription(IWebDriver driver)
+        {
+            return driver.FindElement(By.CssSelector(textSelector)).Text;
+        }
     }
 }
