@@ -12,44 +12,50 @@ namespace WebTestingNUnit.Pages
      **************************************************************************************************************/
     public class InventoryPage
     {
-        readonly Dictionary<string, (string addSelector, string removeSelector, string pageSelector, string textSelector, string priceSelector)> cartItems = new()
+        readonly Dictionary<string, (string addSelector, string removeSelector, string pageSelector, string textSelector, string priceSelector, string imgSelector)> cartItems = new()
         {
             ["backpack"] = 
             ("#add-to-cart-sauce-labs-backpack",
             "#remove-sauce-labs-backpack",
             "#item_4_title_link > div",
             "#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.inventory_item_label > div",
-            ,"#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.pricebar > div"),
+            "#inventory_container > div > div:nth-child(1) > div.inventory_item_description > div.pricebar > div",
+            "#item_4_img_link > img"),
             ["bike light"] = 
             ("#add-to-cart-sauce-labs-bike-light",
             "#remove-sauce-labs-bike-light",
             "#item_0_title_link > div",
             "#inventory_container > div > div:nth-child(2) > div.inventory_item_description > div.inventory_item_label > div",
-            "#inventory_container > div > div:nth-child(2) > div.inventory_item_description > div.pricebar > div"),
+            "#inventory_container > div > div:nth-child(2) > div.inventory_item_description > div.pricebar > div",
+            "#item_0_img_link > img"),
             ["t-shirt"] = 
             ("#add-to-cart-sauce-labs-bolt-t-shirt",
             "#remove-sauce-labs-bolt-t-shirt",
             "#item_1_title_link > div",
             "#inventory_container > div > div:nth-child(3) > div.inventory_item_description > div.inventory_item_label > div",
-            "#inventory_container > div > div:nth-child(3) > div.inventory_item_description > div.pricebar > div"),
+            "#inventory_container > div > div:nth-child(3) > div.inventory_item_description > div.pricebar > div",
+            "#item_1_img_link > img"),
             ["jacket"] = 
             ("#add-to-cart-sauce-labs-fleece-jacket",
             "#remove-sauce-labs-fleece-jacket",
             "#item_5_title_link > div",
             "#inventory_container > div > div:nth-child(4) > div.inventory_item_description > div.inventory_item_label > div",
-            "#inventory_container > div > div:nth-child(3) > div.inventory_item_description > div.pricebar > div"),
+            "#inventory_container > div > div:nth-child(3) > div.inventory_item_description > div.pricebar > div",
+            "#item_5_img_link > img"),
             ["onsie"] = 
             ("#add-to-cart-sauce-labs-onesie",
             "#remove-sauce-labs-onesie",
             "#item_2_title_link > div",
             "#inventory_container > div > div:nth-child(5) > div.inventory_item_description > div.inventory_item_label > div",
-            "#inventory_container > div > div:nth-child(5) > div.inventory_item_description > div.pricebar > div"),
+            "#inventory_container > div > div:nth-child(5) > div.inventory_item_description > div.pricebar > div",
+            "#item_2_img_link > img"),
             ["red t-shirt"] = 
             ("#add-to-cart-test\\.allthethings\\(\\)-t-shirt-\\(red\\)",
             "#remove-test\\.allthethings\\(\\)-t-shirt-\\(red\\)",
             "#item_3_title_link > div",
             "#inventory_container > div > div:nth-child(6) > div.inventory_item_description > div.inventory_item_label > div",
-            "#inventory_container > div > div:nth-child(6) > div.inventory_item_description > div.pricebar > div")
+            "#inventory_container > div > div:nth-child(6) > div.inventory_item_description > div.pricebar > div",
+            "#item_3_img_link > img")
         };
 
         readonly string cartBadgeSelector = "#shopping_cart_container > a > span";
@@ -192,6 +198,20 @@ namespace WebTestingNUnit.Pages
             else
             {
                 throw new Exception($"Item '{item}' does not exist on the page");
+            }
+        }
+
+        public string GetItemPhotoSrc(IWebDriver driver, string item)
+        {
+            item = item.ToLower();
+            if (cartItems.TryGetValue(item, out var selectors))
+            {
+                string src = driver.FindElement(By.CssSelector(selectors.imgSelector)).GetAttribute("src");
+                return src;
+            }
+            else
+            {
+                throw new Exception($"Item '{item}' image does not exist on the page");
             }
         }
     }
