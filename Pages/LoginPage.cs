@@ -72,5 +72,21 @@ namespace WebTestingNUnit.Pages
         {
             Login(driver, "standard_user", "secret_sauce");
         }
+
+       /**************************************************************************************************************
+       * Method for loging problem user.
+       **************************************************************************************************************/
+        public void LoginAsProblemUser(IWebDriver driver)
+        {
+            Login(driver, "problem_user", "secret_sauce");
+        }
+
+       /**************************************************************************************************************
+       * Method for loging visual user.
+       **************************************************************************************************************/
+        public void LoginAsVisualUser(IWebDriver driver)
+        {
+            Login(driver, "visual_user", "secret_sauce");
+        }
     }
 }
